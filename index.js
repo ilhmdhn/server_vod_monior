@@ -18,13 +18,14 @@ app.get('/', async (req, res)=>{
         });
     
     } catch (err) {
+        console.log(`
+            name: ${err.name}
+            message: ${err.message}
+            stack: ${err.stack}
+        `)
         res.json({
          state: false,
-         error:{
-            name: err.name,
-            message: err.message,
-            stack: err.stack
-         }   
+         error: err.name   
         })
     }})
 
