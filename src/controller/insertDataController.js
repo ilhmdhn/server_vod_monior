@@ -23,8 +23,23 @@ const postVodCheckin = async(req, res)=> {
 
             if(checkMaster){
                 const convertModified = moment(checkMaster.date_modified).format('YYYY-MM-DD HH:mm:ss')
-
                 if(convertModified == files[i].date_modified){
+                    continue;
+                }
+
+                const isIdentic = await DetailFileTable.findOne({
+                    where:{
+                        outlet: files[i].detail.outlet,
+                        file_name: files[i].detail.file_name,
+                        room_no: files[i].detail.room_no,
+                        service_time: files[i].detail.service_time,
+                        room_open_time: files[i].detail.room_open_time,
+                        room_close_time: files[i].detail.room_close_time,
+                    },
+                    raw: true
+                });
+
+                if(isIdentic){
                     continue;
                 }
             }
