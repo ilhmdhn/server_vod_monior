@@ -3,8 +3,11 @@ const app = express();
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const sqlz = require('./src/util/sequelize');
-
 const port = process.env.APP_PORT;
+
+//----------IMPORT ROUTE-------------
+
+const insertRoute = require('./src/router/insertRoute');
 
 app.listen(port, ()=>{
     console.log(`APP LISTENING ON ${port} PORT`);
@@ -46,3 +49,5 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw());
 app.use(express.urlencoded({extended:false}));
 app.use(verifyToken)
+
+app.use(insertRoute);

@@ -3,6 +3,7 @@ require('dotenv').config();
 
 module.exports = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
     host: process.env.DATABASE_SERVER,
+    port: process.env.DATABASE_PORT,
     logging: (msg) => {
         if (msg.includes('ERROR')) {
             logger.error(msg);

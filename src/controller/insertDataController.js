@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const LastUploadTable = require('../model/last_upload');
 const MasterFileTable = require('../model/master_file');
 const DetailFileTable = require('../model/detail_file');
-const sqlz = require('../util/sequelize');
+const moment = require('moment')
 
 const postVodCheckin = async(req, res)=> {
     try {
@@ -44,15 +44,13 @@ const postVodCheckin = async(req, res)=> {
             last_upload: Sequelize.literal('NOW()'),
             version: version,
         });
-
+        res.send('success')
     } catch (err) {
         console.log(`
             err: ${err.name},
             message: ${err.message},
             stack: ${err.stack}
         `)
-    }finally{
-        sqlz.close()
     }
 }
 

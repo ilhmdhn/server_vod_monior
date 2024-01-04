@@ -1,8 +1,7 @@
 const {DataTypes} = require('sequelize');
 const sqlz = require('../util/sequelize')
 
-module.exports = () =>{
-    return sqlz.define('LastUpload',{
+module.exports = sqlz.define('LastUpload',{
         outlet:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -15,7 +14,6 @@ module.exports = () =>{
             type: DataTypes.STRING
         }
     },{
-        freezeTableName: true,
+        tableName: 'last_upload',
         timestamps: false
     });
-}

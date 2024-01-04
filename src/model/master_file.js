@@ -1,8 +1,7 @@
 const {DataTypes} = require('sequelize');
 const sqlz = require('../util/sequelize');
 
-module.exports = () =>{
-    return sqlz.define('MasterFile',{
+module.exports = sqlz.define('MasterFile',{
         outlet:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -17,7 +16,6 @@ module.exports = () =>{
             type: DataTypes.DATE
         }
     },{
-        freezeTableName: true,
+        tableName: 'master_file',
         timestamps: false
     });
-}

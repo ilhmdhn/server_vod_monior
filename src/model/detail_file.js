@@ -1,8 +1,7 @@
 const {DataTypes} = require('sequelize');
 const sqlz = require('../util/sequelize')
 
-module.exports = () =>{
-    return sqlz.define('DetailFile',{
+module.exports = sqlz.define('DetailFile',{
         id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -51,4 +50,3 @@ module.exports = () =>{
         tableName:'detail_file',
         timestamps: false
     });
-}
